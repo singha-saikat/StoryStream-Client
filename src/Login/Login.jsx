@@ -4,6 +4,7 @@ import img1 from "../../src/assets/6310507.jpg";
 import useAuth from "../Hook/UseAuth";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
+import toast from "react-hot-toast";
 // import { AuthContext } from "../Provider/AuthProvider";
 // import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 // import app from "../../Firebase/Firebase.config";
@@ -27,33 +28,14 @@ const LoginPage = () => {
       .then((result) => {
         console.log(result.user);
         navigate(location?.state ? location.state : "/");
+        toast.success("Logged in successfully");
 
-        // toast.success("Logged in successfully", {
-        //   position: "top-right",
-        //   autoClose: 500,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "colored",
-        // });
         setTimeout(() => {
           navigate("/");
         }, 2000);
       })
       .catch((error) => {
-        console.log(error);
-        // toast.error(error.message, {
-        //   position: "top-right",
-        //   autoClose: 3000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "colored",
-        // });
+        toast.error(error.message);
       });
   };
   const handleGoogleSignIn = () => {

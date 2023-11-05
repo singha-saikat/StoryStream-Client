@@ -5,6 +5,7 @@ import img1 from "../../src/assets/Mobile-login.jpg";
 import useAuth from "../Hook/UseAuth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const { createUser } = useAuth();
@@ -36,42 +37,25 @@ const SignUp = () => {
       return;
     }
 
-    createUser(email, password).then((userCredential) => {
-      const user = userCredential.user;
-      return updateProfile(user, {
-        displayName: name,
-        photoURL: photo,
-      });
-    })
-    .then(() => {
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        return updateProfile(user, {
+          displayName: name,
+          photoURL: photo,
+        });
+      })
+      .then(() => {
         event.target.reset();
-        // toast.success("Congratulations,  You are now part of Our Platform", {
-        //   position: "top-right",
-        //   autoClose: 1000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "colored",
-        // });
+        toast.success("Congratulations,  You are now part of Our Platform!");
+
         setTimeout(() => {
-          
-          navigate('/');
-        }, 2000); 
+          navigate("/");
+        }, 2000);
       })
       .catch((error) => {
         console.log(error.massage);
-        // toast.error(error.message, {
-        //   position: "top-right",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "colored",
-        // });
+        toast.error("error.message");
       });
   };
 
