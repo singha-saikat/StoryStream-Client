@@ -1,113 +1,55 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
+
 
 const Navbar = () => {
-    return (
-        <div className=" w-full max-w-[1250px] px-[25px] mx-auto">
-          <div className="flex-none lg:hidden">
-            <label
-              htmlFor="my-drawer-3"
-              aria-label="open sidebar"
-              className="btn btn-square btn-ghost"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-6 h-6 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </label>
-          </div>
-          <div className="flex-1 text-xl font-bold text-primary">Clean Co</div>
-          <div className="flex-none hidden lg:block">
-            <div className="flex items-center gap-2">
-              {/* Navbar menu content here */}
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
-                }
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
-                }
-              >
-                About
-              </NavLink>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
-                }
-              >
-                Contact
-              </NavLink>
-              <NavLink
-                to="/services"
-                className={({ isActive }) =>
-                  isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
-                }
-              >
-                Services
-              </NavLink>
-              {/* {user?.email ? (
-                <div className="dropdown dropdown-end ">
-                  <label tabIndex={0} className="cursor-pointer">
-                    <div className="avatar">
-                      <div className="w-10 rounded-full">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1964&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-                      </div>
-                    </div>
-                  </label>
-                  <div
-                    tabIndex={0}
-                    className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                  >
-                    <NavLink
-                      to="/user"
-                      className="px-4 py-2 hover:bg-base-300 rounded-lg"
-                    >
-                      Profile
-                    </NavLink>
-                    <NavLink
-                      to="/user/orders"
-                      className="px-4 py-2 hover:bg-base-300 rounded-lg"
-                    >
-                      Orders
-                    </NavLink>
-    
-                    <div
-                    //   onClick={logout}
-                      className="cursor-pointer text-red-500 px-4 py-2 hover:bg-base-300 rounded-lg"
-                    >
-                      Logout
-                    </div>
-                  </div>
-                </div>
-              ) : ( */}
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'
-                  }
-                >
-                  Login
-                </NavLink>
-              {/* )} */}
-            </div>
-          </div>
+  const navLinkStyles = "text-white font-bold hover:text-yellow-300 p-2 rounded-lg transition duration-300 ease-in-out transform hover:scale-110";
+  const navLink = (
+    <div className="flex flex-col gap-5 lg:flex-row">
+      <li>
+        <NavLink to="/" className={navLinkStyles}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/addProduct" className={navLinkStyles}>Add Product</NavLink>
+      </li>
+      <li>
+        <NavLink to="/cart/myCart" className={navLinkStyles}>My Cart</NavLink>
+      </li>
+      <li>
+        <NavLink to="/partners" className={navLinkStyles}>Our Partners</NavLink>
+      </li>
+      <li>
+        <NavLink to="/gallery" className={navLinkStyles}>Gallery</NavLink>
+      </li>
+    </div>
+  );
+
+  return (
+    <div className="navbar bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-white">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+          </label>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-100 rounded-box w-52">
+            {navLink}
+          </ul>
         </div>
-      );
-    };
+        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal p-0">
+          {navLink}
+        </ul>
+      </div>
+      <div className="navbar-end">
+        <Link to='/login' className="btn bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+          Login
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 export default Navbar;
+
