@@ -1,14 +1,15 @@
+/* eslint-disable no-useless-escape */
 // import { useState } from "react";
+import { updateProfile } from "firebase/auth";
 import img1 from "../../src/assets/Mobile-login.jpg";
+import useAuth from "../Hook/UseAuth";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  //   const [formData, setFormData] = useState({
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //     confirmPassword: "",
-  //     terms: false,
-  //   });
+  const { createUser } = useAuth();
+  const [regError, setRegError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +18,61 @@ const SignUp = () => {
     const email = from.get("email");
     const password = from.get("password");
     const photo = from.get("image");
-    console.log(name, email, password,photo);
+    console.log(name, email, password, photo);
+    if (password.length < 6) {
+      setRegError("Password must be at least 6 characters long");
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      setRegError("Password must contain at least one capital letter");
+      return;
+    }
+    if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)) {
+      setRegError("Password must contain at least one special character");
+      return;
+    }
+    if (!/\d/.test(password)) {
+      setRegError("Password must contain at least one numeric character");
+      return;
+    }
+
+    createUser(email, password).then((userCredential) => {
+      const user = userCredential.user;
+      return updateProfile(user, {
+        displayName: name,
+        photoURL: photo,
+      });
+    })
+    .then(() => {
+        event.target.reset();
+        // toast.success("Congratulations,  You are now part of Our Platform", {
+        //   position: "top-right",
+        //   autoClose: 1000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   theme: "colored",
+        // });
+        setTimeout(() => {
+          
+          navigate('/');
+        }, 2000); 
+      })
+      .catch((error) => {
+        console.log(error.massage);
+        // toast.error(error.message, {
+        //   position: "top-right",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   theme: "colored",
+        // });
+      });
   };
 
   return (
@@ -105,8 +160,29 @@ const SignUp = () => {
               </a>
             </div>
           </form>
+          <div
+            className={`${
+              regError ? "block" : "hidden"
+            } bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative`}
+            role="alert"
+          >
+            <strong className="font-bold">Oops! </strong>
+            <span className="block sm:inline">{regError}</span>
+            <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+              <svg
+                className="fill-current h-6 w-6 text-red-500"
+                role="button"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <title>Close</title>
+                <path d="M14.348 14.849a1.02 1.02 0 0 0 1.414 0l4.242-4.242a1.01 1.01 0 0 0 0-1.414l-4.242-4.242a1.02 1.02 0 0 0-1.414 0L10 9.656 5.756 5.413a1.01 1.01 0 0 0-1.414 0L.1 9.656a1.01 1.01 0 0 0 0 1.414l4.242 4.242a1.02 1.02 0 0 0 1.414 0L10 14.343l4.348 4.506z" />
+              </svg>
+            </span>
+          </div>
+
           <p className="text-center text-gray-500 text-xs">
-            &copy;2023 Acme Corp. All rights reserved.
+            &copy;2023 StoryStream All rights reserved.
           </p>
         </div>
       </div>
