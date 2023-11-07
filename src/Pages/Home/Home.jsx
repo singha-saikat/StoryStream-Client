@@ -1,7 +1,9 @@
+import RecentBlog from "../../Reacent Blog/RecentBlog";
+
 const Home = () => {
     return (
         <div>
-            <h1>Hello</h1>
+           <RecentBlog></RecentBlog>
         </div>
     );
 };
