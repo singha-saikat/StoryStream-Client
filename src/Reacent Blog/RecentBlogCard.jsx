@@ -14,7 +14,7 @@ const RecentBlogCard = ({ card }) => {
         </div>
         <p className="text-center text-xl mb-2">{shortDescription}</p>
         <div className="space-y-3">
-          <Link to={`/booking`} className="btn btn-primary w-full">
+          <Link to={`/blogDetails/${card._id}`} className="btn btn-primary w-full">
             Details
           </Link>
           <button className="btn btn-secondary w-full ">WishList</button>
