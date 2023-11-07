@@ -14,7 +14,7 @@ const RecentBlog = () => {
   return (
     <div className="mt-8">
         <h1 className="text-4xl text-center mb-4">Recent <span className="text-blue-500">Blogs</span></h1>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {data.map((card) => (
           <RecentBlogCard key={card._id} card={card}></RecentBlogCard>
         ))}

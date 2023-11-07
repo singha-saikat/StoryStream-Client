@@ -36,7 +36,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-white">
+    <div className="max-w-7xl mx-auto navbar bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-white">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

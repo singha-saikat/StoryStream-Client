@@ -5,6 +5,7 @@ import MainLayout from "../Layout/MainLayout";
 import LoginPage from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
 import AddBlogs from "../AddBlogs/AddBlogs";
+import AllBlogs from "../Pages/All Blogs/AllBlogs";
 
 const routes = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const routes = createBrowserRouter([
         {
             path:'/addBlogs',
             element: <AddBlogs/>,
+        },
+        {
+            path:'/allBlogs',
+            element: <AllBlogs/>,
         },
       ],
     },
