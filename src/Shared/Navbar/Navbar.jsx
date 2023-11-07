@@ -13,23 +13,23 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/addProduct" className={navLinkStyles}>
-          Add Product
+        <NavLink to="/addBlogs" className={navLinkStyles}>
+          Add Blogs
         </NavLink>
       </li>
       <li>
-        <NavLink to="/cart/myCart" className={navLinkStyles}>
-          My Cart
+        <NavLink to="/allBlogs" className={navLinkStyles}>
+          All Blogs
         </NavLink>
       </li>
       <li>
-        <NavLink to="/partners" className={navLinkStyles}>
-          Our Partners
+        <NavLink to="/featureBlogs" className={navLinkStyles}>
+          Feature Blogs
         </NavLink>
       </li>
       <li>
-        <NavLink to="/gallery" className={navLinkStyles}>
-          Gallery
+        <NavLink to="/wishlist" className={navLinkStyles}>
+          Wishlist
         </NavLink>
       </li>
     </div>

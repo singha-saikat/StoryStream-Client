@@ -5,11 +5,6 @@ import useAuth from "../Hook/UseAuth";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
 import toast from "react-hot-toast";
-// import { AuthContext } from "../Provider/AuthProvider";
-// import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-// import app from "../../Firebase/Firebase.config";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const { signIn, setLoading } = useAuth();
@@ -136,7 +131,6 @@ const LoginPage = () => {
             </div>
           </div>
         </div>
-        {/* <ToastContainer /> */}
       </div>
     </div>
   );
