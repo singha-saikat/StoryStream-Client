@@ -9,6 +9,8 @@ import AllBlogs from "../Pages/All Blogs/AllBlogs";
 import BlogDetails from "../Pages/Blog Details/BlogDetails";
 import UpdateBlog from "../Pages/Update Blogs/UpdateBlog";
 
+import Wishlist from "../Pages/WishList/Wishlist";
+
 const routes = createBrowserRouter([
     {
       path: "/",
@@ -42,6 +44,10 @@ const routes = createBrowserRouter([
         {
             path:'/update-blog/:_id',
             element: <UpdateBlog/>,
+        },
+        {
+            path:'/wishlist',
+            element: <Wishlist/>,
         },
       ],
     },

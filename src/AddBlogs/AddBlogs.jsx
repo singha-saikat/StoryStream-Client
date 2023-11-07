@@ -1,6 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-import blogImage from "../../src/assets/blog-notes-concept-with-wooden-blocks-pen-black-notebook-top-view.jpg";
+import blogImage from "../../src/assets/addBlog.jpg";
 import useAuth from "../Hook/UseAuth";
 
 const AddBlogs = () => {
