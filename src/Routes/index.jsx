@@ -7,6 +7,7 @@ import SignUp from "../SignUp/SignUp";
 import AddBlogs from "../AddBlogs/AddBlogs";
 import AllBlogs from "../Pages/All Blogs/AllBlogs";
 import BlogDetails from "../Pages/Blog Details/BlogDetails";
+import UpdateBlog from "../Pages/Update Blogs/UpdateBlog";
 
 const routes = createBrowserRouter([
     {
@@ -40,7 +41,7 @@ const routes = createBrowserRouter([
         },
         {
             path:'/update-blog/:_id',
-            element: <BlogDetails/>,
+            element: <UpdateBlog/>,
         },
       ],
     },
