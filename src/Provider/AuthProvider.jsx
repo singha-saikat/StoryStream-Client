@@ -48,8 +48,6 @@ const AuthProvider = ({children}) => {
         setLoading,
         loading
         
-
-
      }
     return (
         <AuthContext.Provider value={authInfo}>

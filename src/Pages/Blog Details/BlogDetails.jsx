@@ -1,10 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useAuth from "../../Hook/UseAuth";
+import toast from "react-hot-toast";
 
 const BlogDetails = () => {
   const [blogDetails, setBlogDetails] = useState({});
   const params = useParams();
+  const { _id } = useParams();
+  const navigate = useNavigate();
+  const { user } = useAuth(); // Your auth context should provide the current user
+
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -19,6 +27,55 @@ const BlogDetails = () => {
     };
     getData();
   }, [params]);
+  useEffect(() => {
+    // Fetch comments
+    // const fetchComments = async () => {
+    //   const result = await axios.get(
+    //     `http://localhost:4000/api/v1/comments/${_id}`
+    //   );
+    //   setComments(result.data);
+    // };
+    // fetchComments();
+    const getData = async () => {
+        try {
+          const res = await axios.get(
+            "http://localhost:4000/api/v1/allComments"
+          );
+          setComments(res.data);
+        } catch (error) {
+          console.error("There was an error fetching the blog details:", error);
+        }
+      };
+      getData();
+  }, [_id]);
+
+  const handleCommentSubmit = async () => {
+    console.log(newComment);
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/v1/comments",
+        {
+          blogId: _id,
+          userName: user.displayName,
+          userProfilePic: user.photoURL,
+          comment: newComment,
+        }
+      );
+
+      toast.success("Comment posted successfully!");
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error posting blog:", error);
+      toast.error(
+        `Error posting blog: ${error.response?.data?.message || error.message}`
+      );
+    }
+  };
+
+  console.log(blogDetails.email);
+  console.log(user?.email);
+  console.log("comment",comments);
+  const isBlogOwner = user && blogDetails?.email === user?.email;
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -29,14 +86,18 @@ const BlogDetails = () => {
             alt={blogDetails.title}
             className="w-full h-96 object-cover"
           />
-          <h1 className="text-3xl font-bold mt-4 text-center">Title: {blogDetails.title}</h1>
-          <p className="text-gray-700 mt-2 bg-slate-300 p-8">Short note:{blogDetails.shortDescription}</p>
+          <h1 className="text-3xl font-bold mt-4 text-center">
+            Title: {blogDetails.title}
+          </h1>
+          <p className="text-gray-700 mt-2 bg-slate-300 p-8">
+            Short note:{blogDetails.shortDescription}
+          </p>
           <div className="mt-4 text-gray-600 bg-slate-100 p-4">
             {blogDetails.longDescription}
           </div>
         </div>
 
-        {/* {isBlogOwner ? (
+        {isBlogOwner ? (
           <button
             onClick={() => navigate(`/update-blog/${_id}`)}
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
@@ -45,18 +106,19 @@ const BlogDetails = () => {
           </button>
         ) : (
           <div className="mt-8">
-            {currentUser && !isBlogOwner ? (
+            {user && !isBlogOwner ? (
               <textarea
                 className="border border-gray-300 w-full p-2 rounded"
                 rows="4"
                 placeholder="Leave a comment..."
-                value={newComment}
+                name="comment"
+                // value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
               ></textarea>
             ) : (
               <p className="text-gray-500">Cannot comment on own blog.</p>
             )}
-            {currentUser && !isBlogOwner && (
+            {user && !isBlogOwner && (
               <button
                 onClick={handleCommentSubmit}
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition mt-4"
@@ -65,9 +127,9 @@ const BlogDetails = () => {
               </button>
             )}
           </div>
-        )} */}
+        )}
 
-        {/* <div className="mt-8">
+        <div className="mt-8">
           <h2 className="text-2xl font-bold">Comments</h2>
           {comments.map((comment) => (
             <div
@@ -83,7 +145,7 @@ const BlogDetails = () => {
               <p className="text-gray-600">{comment.comment}</p>
             </div>
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   );

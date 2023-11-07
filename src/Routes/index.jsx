@@ -38,6 +38,10 @@ const routes = createBrowserRouter([
             path:'/blogDetails/:_id',
             element: <BlogDetails/>,
         },
+        {
+            path:'/update-blog/:_id',
+            element: <BlogDetails/>,
+        },
       ],
     },
   ]);

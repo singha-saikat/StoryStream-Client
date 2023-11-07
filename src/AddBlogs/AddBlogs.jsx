@@ -1,8 +1,10 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import blogImage from "../../src/assets/blog-notes-concept-with-wooden-blocks-pen-black-notebook-top-view.jpg";
+import useAuth from "../Hook/UseAuth";
 
 const AddBlogs = () => {
+  const {user} = useAuth();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -23,11 +25,13 @@ const AddBlogs = () => {
       const response = await axios.post(
         "http://localhost:4000/api/v1/user/create-blog",
         {
+          email:user.email,
           title,
           imageUrl,
           category,
           shortDescription,
           longDescription,
+          
         }
       );
 
