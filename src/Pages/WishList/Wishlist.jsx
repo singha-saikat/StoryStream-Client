@@ -14,7 +14,7 @@ const Wishlist = () => {
           try {
             const res = await axios.get(
                 // http://localhost:4000/api/v1/wishlist?email=saikatsingha50@gmail.com
-              `http://localhost:4000/api/v1/wishlist?email=${user?.email}`,
+              `http://localhost:4000/api/v1/wishlist?email=${user?.email}`,{withCredentials:true}
             );
             setWishlistData(res.data);
             

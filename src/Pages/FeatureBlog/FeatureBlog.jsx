@@ -5,7 +5,7 @@ import MUIDataTable from "mui-datatables";
 
 const FeatureBlog = () => {
     const getBlogs = async () => {
-      const res = await axios.get("http://localhost:4000/api/v1/featureBlogs");
+      const res = await axios.get("http://localhost:4000/api/v1/featureBlogs",{withCredentials:true});
       return res.data;
     };
   

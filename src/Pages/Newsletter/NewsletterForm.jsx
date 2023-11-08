@@ -14,7 +14,9 @@ const NewsletterForm = () => {
   };
 
   return (
-    <div className="flex max-w-7xl mx-auto p-4 items-center">
+    <div>
+        <h1 className=" mt-6 text-4xl text-center mb-4">Recent <span className="text-green-500">Blogs</span></h1>
+         <div className="flex max-w-7xl mx-auto p-4 items-center">
         <div className="flex-1">
         <img src={image} alt="" />
         </div>
@@ -44,6 +46,8 @@ const NewsletterForm = () => {
       </form>
     </div>
     </div>
+    </div>
+   
     
   );
 };

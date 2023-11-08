@@ -4,6 +4,7 @@ import { getAuth,createUserWithEmailAndPassword, signOut, onAuthStateChanged, si
 
 import { createContext, useEffect, useState } from "react";
 import app from "../../Firebase/Firebase.config";
+import axios from "axios";
 
 
 
@@ -31,15 +32,29 @@ const AuthProvider = ({children}) => {
     
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth,currentUser => {
-            
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = {email : userEmail}
             setUser(currentUser)
             setLoading(false);
+            if(currentUser){
+                
+                axios.post('http://localhost:4000/api/v1/jwt',loggedUser,{withCredentials:true})
+                .then(res =>{
+                    console.log('token response',res.data);
+                })
+            }
+            else{
+                axios.post('http://localhost:4000/api/v1/logout',loggedUser,{withCredentials:true})
+                .then(res => {
+                    console.log(res.data);
+                })
+            }
     
         });
         return () => {
             unSubscribe();
         }
-      },[])
+      },[user?.email])
      const authInfo ={
         user,
         createUser,
