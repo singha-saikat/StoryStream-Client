@@ -5,6 +5,7 @@ import useAuth from "../Hook/UseAuth";
 
 const AddBlogs = () => {
   const {user} = useAuth();
+  console.log(user);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -25,7 +26,8 @@ const AddBlogs = () => {
       const response = await axios.post(
         "http://localhost:4000/api/v1/user/create-blog",
         {
-          email:user.email,
+          email:user?.email,
+          image:user?.photoURL,
           title,
           imageUrl,
           category,

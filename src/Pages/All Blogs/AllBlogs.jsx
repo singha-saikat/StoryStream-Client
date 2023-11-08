@@ -13,33 +13,37 @@ const AllBlogs = () => {
       setBlogsData(res.data);
     };
     getData();
-  }, [selectedCategory,selectedTitle]);
+  }, [selectedCategory, selectedTitle]);
 
   // Event handler for the title select
   const handleTitleChange = (event) => {
-    
     setSelectedTitle(event.target.value);
   };
 
   // Event handler for the category select
   const handleCategoryChange = (event) => {
-    console.log('Category',event.target.value);
     setSelectedCategory(event.target.value);
+  };
+
+  // Event handler for the reset button
+  const handleReset = () => {
+    setSelectedTitle(""); // Reset the selected title
+    setSelectedCategory(""); // Reset the selected category
   };
 
   return (
     <div className="mt-8 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row justify-end gap-5 items-center border-2 border-primary p-4 md:mx-12">
-      <div>
-        Selected Title: {selectedTitle}
-        <br />
-        Selected Category: {selectedCategory}
-      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-5 border-2 border-primary p-4 md:mx-12">
         <div>
-          <div className="form-control w-full max-w-xs">
+          Selected Title: {selectedTitle}
+          <br />
+          Selected Category: {selectedCategory}
+        </div>
+        <div>
+          <div className="form-control  w-full max-w-xs">
             <label className="label">
               <span className="label-text">
-              Pick a title
+                Pick a title
               </span>
             </label>
             <select
@@ -62,7 +66,7 @@ const AllBlogs = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               <span className="label-text">
-              Pick a category
+                Pick a category
               </span>
             </label>
             <select
@@ -81,14 +85,17 @@ const AllBlogs = () => {
             </select>
           </div>
         </div>
+        <div>
+          <button className="btn-sm btn-secondary" onClick={handleReset}>
+            Reset
+          </button>
+        </div>
       </div>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8 gap-10">
         {blogsData.map((card) => (
           <AllBlogsCard key={card._id} card={card}></AllBlogsCard>
         ))}
       </div>
-      
-      
     </div>
   );
 };
