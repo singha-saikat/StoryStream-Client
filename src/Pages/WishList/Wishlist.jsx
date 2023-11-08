@@ -24,10 +24,10 @@ const Wishlist = () => {
         };
         getData();
       },[user?.email]);
-      console.log(user);
-      useEffect(() => {
-        console.log("wishlist data",wishlistData);
-      },[wishlistData])
+      // console.log(user);
+      // useEffect(() => {
+      //   console.log("wishlist data",wishlistData);
+      // },[wishlistData])
     return (
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8">
             
