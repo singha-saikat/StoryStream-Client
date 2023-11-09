@@ -7,6 +7,7 @@ import WishlistCard from "./WishlistCard";
 
 const Wishlist = () => {
     const { user } = useAuth();
+    
 
     // Define the fetch function
     const getWishlist = async () => {

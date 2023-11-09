@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 
 const WishlistCard = ({ item }) => {
   const { _id, title, imageUrl, category, shortDescription } = item;
-//   const [data, setData] = useState(); // Assuming you need this state
+  
 
-  // This function is called when the 'Remove from Wishlist' button is clicked
   const handleRemoveWishlist = async () => {
     
     try {
