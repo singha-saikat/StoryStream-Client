@@ -6,7 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 const FeatureBlog = () => {
     const getBlogs = async () => {
-        const res = await axios.get("https://story-stream-car-server.vercel.app/api/v1/featureBlogs", { withCredentials: true });
+        const res = await axios.get("https://story-stream-car-server.vercel.app/api/v1/featureBlogs", );
         return res.data;
     };
 

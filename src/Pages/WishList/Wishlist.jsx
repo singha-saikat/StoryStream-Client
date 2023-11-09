@@ -12,7 +12,7 @@ const Wishlist = () => {
     // Define the fetch function
     const getWishlist = async () => {
         const { data } = await axios.get(
-            `https://story-stream-car-server.vercel.app/api/v1/wishlist?email=${user?.email}`, { withCredentials: true }
+            `https://story-stream-car-server.vercel.app/api/v1/wishlist?email=${user?.email}`, 
         );
         return data;
     };

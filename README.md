@@ -7,7 +7,7 @@ Below are bullet points that represent the features of my StoryStream applicatio
 To deploy this project run
 
 ```bash
-  https://story-stream-car-server.vercel.app/api/v1/
+ https://storystream-auth.web.app/
 ```
 
 - Search and Filtering : Ability to search for blogs by title and filter them based on categories, enhancing user experience and making blog discovery easier.Featured Blogs Page: A section dedicated to showcasing the top posts based on the word count of the long description, employing a visual table library for an organized and visually appealing display

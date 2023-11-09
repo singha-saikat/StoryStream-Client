@@ -13,7 +13,7 @@ const UpdateBlog = () => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          `https://story-stream-car-server.vercel.app/api/v1/update-blog/${_id}`, { withCredentials: true }
+          `https://story-stream-car-server.vercel.app/api/v1/update-blog/${_id}`, 
         );
         setUpdateBlog(res.data);
       } catch (error) {
