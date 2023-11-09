@@ -1,3 +1,8 @@
+import image1 from '../../assets/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg';
+import image2 from '../../assets/portrait-young-businesswoman-holding-eyeglasses-hand-against-gray-backdrop.jpg';
+import image3 from '../../assets/inside-portrait-confident-young-man-white-clothes-posing-with-charming-smile-isolated-wall.jpg';
+import image4 from '../../assets/handsome-bearded-businessman-rubbing-hands-having-deal.jpg';
+
 const TeamMember = ({ name, role, image }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 m-4">
@@ -17,26 +22,22 @@ const Team = () => {
     {
       name: "John Doe",
       role: "Founder",
-      image:
-        "src/assets/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer.jpg",
+      image: image1,
     },
     {
       name: "Jane Smith",
       role: "Content Manager",
-      image:
-        "src/assets/inside-portrait-confident-young-man-white-clothes-posing-with-charming-smile-isolated-wall.jpg",
+      image: image2,
     },
     {
       name: "Alex Johnson",
       role: "Lead Developer",
-      image:
-        "src/assets/portrait-young-businesswoman-holding-eyeglasses-hand-against-gray-backdrop.jpg",
+      image: image3,
     },
     {
       name: "Emily Davis",
       role: "Marketing Specialist",
-      image:
-        "src/assets/handsome-bearded-businessman-rubbing-hands-having-deal.jpg",
+      image: image4,
     },
     // Add as many team members as needed
   ];
