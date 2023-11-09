@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { getAuth,createUserWithEmailAndPassword, signOut, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import app from "../../Firebase/Firebase.config";
-import axios from "axios";
 
 
 
@@ -38,13 +38,13 @@ const AuthProvider = ({children}) => {
             setLoading(false);
             if(currentUser){
                 
-                axios.post('http://localhost:4000/api/v1/jwt',loggedUser,{withCredentials:true})
+                axios.post('https://story-stream-car-server.vercel.app/api/v1/jwt',loggedUser,{withCredentials:true})
                 .then(res =>{
                     console.log('token response',res.data);
                 })
             }
             else{
-                axios.post('http://localhost:4000/api/v1/logout',loggedUser,{withCredentials:true})
+                axios.post('https://story-stream-car-server.vercel.app/api/v1/logout',loggedUser,{withCredentials:true})
                 .then(res => {
                     console.log(res.data);
                 })

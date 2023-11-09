@@ -15,8 +15,8 @@ const NewsletterForm = () => {
 
   return (
     <div>
-        <h1 className=" mt-6 text-4xl text-center mb-4">Recent <span className="text-green-500">Blogs</span></h1>
-         <div className="flex max-w-7xl mx-auto p-4 items-center">
+        <h1 className=" mt-6 text-4xl text-center mb-4">News <span className="text-green-500">Latter</span></h1>
+         <div className="flex flex-col md:flex-row max-w-7xl mx-auto p-4 items-center">
         <div className="flex-1">
         <img src={image} alt="" />
         </div>

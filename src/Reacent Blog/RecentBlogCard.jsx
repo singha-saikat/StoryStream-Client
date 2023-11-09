@@ -1,10 +1,10 @@
 import axios from "axios";
-import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
-import useAuth from "../Hook/UseAuth";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 import { PhotoProvider, PhotoView } from 'react-photo-view'; // Import PhotoProvider and PhotoView
 import 'react-photo-view/dist/react-photo-view.css'; // Import default styles for photo view
+import { Link } from "react-router-dom";
+import useAuth from "../Hook/UseAuth";
 
 const RecentBlogCard = ({ card }) => {
   const { title, imageUrl, category, shortDescription } = card;
@@ -17,7 +17,7 @@ const RecentBlogCard = ({ card }) => {
     console.log(card);
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/user/wishlist",
+        "https://story-stream-car-server.vercel.app/api/v1/user/wishlist",
         {
           ...data,
         }

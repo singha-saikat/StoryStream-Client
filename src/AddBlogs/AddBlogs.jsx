@@ -24,7 +24,7 @@ const AddBlogs = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/user/create-blog",
+        "https://story-stream-car-server.vercel.app/api/v1/user/create-blog",
         {
           email:user?.email,
           image:user?.photoURL,

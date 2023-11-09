@@ -1,14 +1,14 @@
 import axios from "axios";
+import { motion } from "framer-motion"; // Import motion from Framer Motion
 import { useEffect, useState } from "react";
 import RecentBlogCard from "./RecentBlogCard";
-import { motion } from "framer-motion"; // Import motion from Framer Motion
 
 const RecentBlog = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get("http://localhost:4000/api/v1/recentBlogs");
+      const res = await axios.get("https://story-stream-car-server.vercel.app/api/v1/recentBlogs");
       setData(res.data);
     };
     getData();

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../Hook/UseAuth";
-import toast from "react-hot-toast";
 
 const BlogDetails = () => {
   const [blogDetails, setBlogDetails] = useState({});
@@ -18,7 +18,7 @@ const BlogDetails = () => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/blogsDetails/${params._id}`
+          `https://story-stream-car-server.vercel.app/api/v1/blogsDetails/${params._id}`
         );
         setBlogDetails(res.data);
       } catch (error) {
@@ -31,7 +31,7 @@ const BlogDetails = () => {
     // Fetch comments
     // const fetchComments = async () => {
     //   const result = await axios.get(
-    //     `http://localhost:4000/api/v1/comments/${_id}`
+    //     https://story-stream-car-server.vercel.app/api/v1/comments/${_id}`
     //   );
     //   setComments(result.data);
     // };
@@ -39,7 +39,7 @@ const BlogDetails = () => {
     const getData = async () => {
         try {
           const res = await axios.get(
-            "http://localhost:4000/api/v1/allComments"
+            "https://story-stream-car-server.vercel.app/api/v1/allComments"
           );
           setComments(res.data);
         } catch (error) {
@@ -53,7 +53,7 @@ const BlogDetails = () => {
     console.log(newComment);
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/comments",
+        "https://story-stream-car-server.vercel.app/api/v1/comments",
         {
           blogId: _id,
           userName: user.displayName,

@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import image from "../../../src/assets/blog.jpg";
 import useAuth from "../../Hook/UseAuth";
-import toast from "react-hot-toast";
 
 const UpdateBlog = () => {
   const { user } = useAuth();
@@ -13,7 +13,7 @@ const UpdateBlog = () => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/update-blog/${_id}`
+          `https://story-stream-car-server.vercel.app/api/v1/update-blog/${_id}`
         );
         setUpdateBlog(res.data);
       } catch (error) {
@@ -34,7 +34,7 @@ const UpdateBlog = () => {
     try {
       const response = await axios.patch(
         
-        `http://localhost:4000/api/v1/user/update-blog/${_id}`,
+        `https://story-stream-car-server.vercel.app/api/v1/user/update-blog/${_id}`,
         {
           email: user.email,
           title,

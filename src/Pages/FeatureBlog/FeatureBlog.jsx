@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MUIDataTable from "mui-datatables";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css'; 
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const FeatureBlog = () => {
     const getBlogs = async () => {
-        const res = await axios.get("http://localhost:4000/api/v1/featureBlogs", { withCredentials: true });
+        const res = await axios.get("https://story-stream-car-server.vercel.app/api/v1/featureBlogs", { withCredentials: true });
         return res.data;
     };
 

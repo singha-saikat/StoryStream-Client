@@ -9,7 +9,7 @@ const AllBlogs = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get(`http://localhost:4000/api/v1/allBlogs?category=${selectedCategory}&title=${selectedTitle}`);
+      const res = await axios.get(`https://story-stream-car-server.vercel.app/api/v1/allBlogs?category=${selectedCategory}&title=${selectedTitle}`);
       setBlogsData(res.data);
     };
     getData();

@@ -12,7 +12,7 @@ const WishlistCard = ({ item }) => {
   const handleRemoveWishlist = async () => {
     
     try {
-        const response = await axios.delete(`http://localhost:4000/api/v1/delete/${item._id}`);
+        const response = await axios.delete(`https://story-stream-car-server.vercel.app/api/v1/delete/${item._id}`);
         const data = response.data;
         console.log(data);
         
